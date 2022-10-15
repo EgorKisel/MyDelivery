@@ -8,9 +8,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import coil.load
 import com.geekbrains.mydelivery.R
 import com.geekbrains.mydelivery.model.MenuDTOItem
-import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.recycler_food_item.view.*
 
 class MyMenuAdapter(private val context: Context, private val menuList: MutableList<MenuDTOItem>) :
@@ -48,8 +48,12 @@ class MyMenuAdapter(private val context: Context, private val menuList: MutableL
         val listItem = menuList[position]
         holder.bind(listItem)
 
-        Picasso.get().load(menuList[position].img).into(holder.image)
+        //Picasso.get().load(menuList[position].img).into(holder.image)
         holder.txt_name.text = menuList[position].name
-    }
 
+        holder.image.load(menuList[position].img){
+            crossfade(true)
+            placeholder(R.drawable.pizza1)
+        }
+    }
 }

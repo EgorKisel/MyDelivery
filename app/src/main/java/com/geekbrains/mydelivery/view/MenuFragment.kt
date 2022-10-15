@@ -1,5 +1,6 @@
 package com.geekbrains.mydelivery.view
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,8 +19,8 @@ import retrofit2.Response
 
 class MenuFragment: Fragment() {
 
-    lateinit var mService: RetrofitServices
-    lateinit var layoutManager: LinearLayoutManager
+    private lateinit var mService: RetrofitServices
+    private lateinit var layoutManager: LinearLayoutManager
     lateinit var adapter: MyMenuAdapter
 
     private var _binding: FragmentMenuBinding? = null
@@ -32,7 +33,7 @@ class MenuFragment: Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMenuBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,11 +51,12 @@ class MenuFragment: Fragment() {
     }
 
     private fun getAllMovieList() {
-        mService.getMenuList("9fb3046c93msh8851f1973697936p1e60e5jsnf451c9ebd530").enqueue(object : Callback<MutableList<MenuDTOItem>> {
+        mService.getMenuList().enqueue(object : Callback<MutableList<MenuDTOItem>> {
             override fun onFailure(call: Call<MutableList<MenuDTOItem>>, t: Throwable) {
 
             }
 
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(call: Call<MutableList<MenuDTOItem>>, response: Response<MutableList<MenuDTOItem>>) {
                 adapter = MyMenuAdapter(requireActivity().applicationContext, response.body() as MutableList<MenuDTOItem>)
                 adapter.notifyDataSetChanged()

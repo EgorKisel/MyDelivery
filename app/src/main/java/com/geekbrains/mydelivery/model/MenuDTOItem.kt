@@ -5,19 +5,19 @@ import com.google.gson.annotations.SerializedName
 
 data class MenuDTOItem(
     @SerializedName("description")
-    val description: String,
+    val description: String? = null,
     @SerializedName("id")
-    val id: Int,
+    val id: Int? = null,
     @SerializedName("img")
-    val img: String,
+    val img: String? = null,
     @SerializedName("name")
-    val name: String,
+    val name: String? = null,
     @SerializedName("price")
-    val price: Int,
+    val price: Int? = null,
     @SerializedName("quantity")
-    val quantity: Int,
+    val quantity: Int? = null,
     @SerializedName("sizeandcrust")
-    val sizeandcrust: List<Sizeandcrust>,
+    val sizeandcrust: List<Sizeandcrust>? = null,
     @SerializedName("veg")
-    val veg: Boolean
+    val veg: Boolean? = null
 )
