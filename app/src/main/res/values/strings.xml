@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MyDelivery</string>
+    <string name="qr">QR</string>
+    <string name="city">City</string>
+    <string name="pizza">Pizza</string>
+    <string name="combo">Combo</string>
+    <string name="snacks">Snacks</string>
+    <string name="menu">Menu</string>
+    <string name="profile">Profile</string>
+    <string name="contacts">Contacts</string>
+    <string name="basket">Basket</string>
+    <string name="desserts">Desserts</string>
+    <string name="beverages">Beverages</string>
+    <string name="pizzaKakayato">Pizza</string>
+</resources>

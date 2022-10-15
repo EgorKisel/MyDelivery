@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <HorizontalScrollView
+        android:id="@+id/pizzas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/pizzas_margin_top">
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/stock"
+                android:layout_width="@dimen/width_horizontal_scroll_pizza"
+                android:layout_height="@dimen/width_horizontal_scroll_pizza"
+                android:src="@drawable/pizza1" />
+
+            <ImageView
+                android:layout_width="@dimen/width_horizontal_scroll_pizza"
+                android:layout_height="@dimen/width_horizontal_scroll_pizza"
+                android:src="@drawable/pizza2" />
+
+            <ImageView
+                android:layout_width="@dimen/width_horizontal_scroll_pizza"
+                android:layout_height="@dimen/width_horizontal_scroll_pizza"
+                android:src="@drawable/pizza3" />
+
+            <ImageView
+                android:layout_width="@dimen/width_horizontal_scroll_pizza"
+                android:layout_height="@dimen/width_horizontal_scroll_pizza"
+                android:src="@drawable/pizza4" />
+
+            <ImageView
+                android:layout_width="@dimen/width_horizontal_scroll_pizza"
+                android:layout_height="@dimen/width_horizontal_scroll_pizza"
+                android:src="@drawable/pizza5" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <HorizontalScrollView
+        android:id="@+id/categories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/categories_margin_top"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/pizza"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/pizza" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/combo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/combo" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/snacks"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/snacks" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/desserts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/desserts" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/beverages"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/beverages" />
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

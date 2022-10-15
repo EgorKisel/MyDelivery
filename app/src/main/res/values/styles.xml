@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="textSizeButton">20sp</dimen>
+
+    <style name="toolbar_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?attr/actionBarSize</item>
+        <item name="android:theme">@style/search_icon_text_color</item>
+        <item name="android:background">#f9d71c</item>
+        <item name="menu">@menu/menu_main</item>
+        <item name="title">@string/app_name</item>
+        <item name="titleTextColor">@color/black</item>
+    </style>
+
+    <style name="search_icon_text_color">
+        <item name="android:textColorPrimary">@color/black</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlHighlight">@color/black</item>
+        <item name="android:textColorHint">@color/black</item>
+    </style>
+
+    <style name="MyMaterialButtonStyle" parent="Widget.MaterialComponents.Button">
+        <item name="cornerRadius">5dp</item>
+        <item name="android:textAppearance">@style/MyTextAppearanceButton</item>
+        <item name="colorBackgroundFloating">@color/black</item>
+        <item name="backgroundTint">#EFDB29</item>
+    </style>
+
+    <style name="MyTextAppearanceButton">
+        <item name="android:textSize">@dimen/textSizeButton</item>
+        <item name="fontFamily">?superFont</item>
+        <item name="android:fontFamily">?superFont</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:letterSpacing">0.0178571429</item>
+    </style>
+
+    <style name="MyBottomNavigationStyle" parent="Widget.MaterialComponents.NavigationView">
+        <item name="android:background">?attr/superColor</item>
+    </style>
+
+</resources>
