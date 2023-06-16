@@ -5,26 +5,30 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.geekbrains.mydelivery.databinding.FragmentMenuBinding
+import com.geekbrains.mydelivery.databinding.FragmentMenuNewBinding
 import com.geekbrains.mydelivery.model.MenuDTOItem
 import com.geekbrains.mydelivery.model.common.Common
 import com.geekbrains.mydelivery.model.retrofit.RetrofitServices
 import com.geekbrains.mydelivery.view.adapter.MyMenuAdapter
+import com.geekbrains.mydelivery.view.behavior.FadeBehavior
 import kotlinx.android.synthetic.main.fragment_menu.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MenuFragment: Fragment() {
+class MenuFragment : Fragment() {
 
     private lateinit var mService: RetrofitServices
     private lateinit var layoutManager: LinearLayoutManager
     lateinit var adapter: MyMenuAdapter
 
-    private var _binding: FragmentMenuBinding? = null
-    private val binding: FragmentMenuBinding
+    private var _binding: FragmentMenuNewBinding? = null
+    private val binding: FragmentMenuNewBinding
         get() {
             return _binding!!
         }
@@ -34,7 +38,7 @@ class MenuFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMenuBinding.inflate(inflater, container, false)
+        _binding = FragmentMenuNewBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -47,7 +51,7 @@ class MenuFragment: Fragment() {
         recycler.layoutManager = layoutManager
 
         getAllMovieList()
-
+        //(binding.pizzas.layoutParams as CoordinatorLayout.LayoutParams).behavior = FadeBehavior()
     }
 
     private fun getAllMovieList() {
@@ -57,15 +61,24 @@ class MenuFragment: Fragment() {
             }
 
             @SuppressLint("NotifyDataSetChanged")
-            override fun onResponse(call: Call<MutableList<MenuDTOItem>>, response: Response<MutableList<MenuDTOItem>>) {
-                adapter = MyMenuAdapter(requireActivity().applicationContext, response.body() as MutableList<MenuDTOItem>)
-                adapter.notifyDataSetChanged()
-                recycler.adapter = adapter
+            override fun onResponse(
+                call: Call<MutableList<MenuDTOItem>>,
+                response: Response<MutableList<MenuDTOItem>>
+            ) {
+                if (response.isSuccessful && response.body() != null) {
+                    val menuItems = response.body() as MutableList<MenuDTOItem>
+                    adapter = MyMenuAdapter(requireActivity().applicationContext, menuItems)
+                    adapter.notifyDataSetChanged()
+                    recycler.adapter = adapter
+                } else {
+                    // Обработка неуспешного ответа или пустого тела
+                    //binding.responseErrorMessage.text = "Sorry, You have exceeded the MONTHLY quota for Requests on your current plan, BASIC. Upgrade your plan at https://rapidapi.com/kaushiksheel9/api/pizza-and-desserts"
+                }
             }
         })
     }
 
-    companion object{
+    companion object {
         @JvmStatic
         fun newInstance() =
             MenuFragment()

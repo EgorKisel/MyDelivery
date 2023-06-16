@@ -4,5 +4,5 @@
     <dimen name="categories_margin_top">155dp</dimen>
     <dimen name="pizzas_margin_top">55dp</dimen>
     <dimen name="recycler_item_line_height">1dp</dimen>
-    <dimen name="food_item_text_size">25sp</dimen>
+    <dimen name="food_item_text_size">20sp</dimen>
 </resources>
